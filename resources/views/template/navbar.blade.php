@@ -6,44 +6,45 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is("/")? "active" : "" }}" aria-current="page" href="/">Home</a>
-          </li>
-          @if (Gate::allows('isAdmin'))
             <li class="nav-item">
-                <a class="nav-link" href="#">Manage Company</a>
+                <a class="nav-link {{ Request::is("/")? "active" : "" }}" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Manage Real Estates</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-            </li>
-          @elseif (Auth::check())
-            @if (Request::is("/"))
+            @if (Gate::allows('isAdmin'))
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manage Company</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manage Real Estates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            @elseif (Auth::check())
                 <li class="nav-item">
                     <a class="nav-link" href="#">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
-            @endif
-          @else
-            @if (Request::is("/"))
+            @else
+                @if (Request::is("/"))
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Buy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rent</a>
+                    </li>
+                @endif
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Buy</a>
+                    <a class="nav-link {{ Request::is("login")? "active" : "" }}" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Rent</a>
+                    <a class="nav-link {{ Request::is("register")? "active" : "" }}" href="/register">Register</a>
                 </li>
             @endif
-            <li class="nav-item">
-              <a class="nav-link {{ Request::is("login")? "active" : "" }}" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {{ Request::is("register")? "active" : "" }}" href="/register">Register</a>
-            </li>
-          @endif
         </ul>
       </div>
     </div>
