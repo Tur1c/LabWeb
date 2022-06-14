@@ -41,4 +41,9 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['error' => 'Email or password is incorrect']);
         }
     }
+
+    public function logout(){
+        auth()->logout();
+        return redirect()->route('login_page');
+    }
 }

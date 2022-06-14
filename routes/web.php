@@ -16,10 +16,12 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home_page');
 
 Route::get("/login", [UserController::class, "index_login"])->name("login_page");
 Route::post("/login", [UserController::class, "login"])->name("login");
 
 Route::get("/register", [UserController::class, "index_register"])->name("register_page");
 Route::post("/register", [UserController::class, "register"])->name("register");
+
+Route::get('/logout', [UserController::class, "logout"])->name("logout");
