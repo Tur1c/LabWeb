@@ -11,31 +11,40 @@
             </li>
             @if (Gate::allows('isAdmin'))
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manage Company</a>
+                    <a class="nav-link {{ Request::is("company*")? "active" : "" }}" href="/company">Manage Company</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manage Real Estates</a>
+                    <a class="nav-link" href="/real-estate">Manage Real Estates</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
             @elseif (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cart</a>
+                    <a class="nav-link {{ Request::is("about-us")? "active" : "" }}" href="/about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is("buy")? "active" : "" }}" href="/buy">Buy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is("rent")? "active" : "" }}" href="/rent">Rent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is("cart")? "active" : "" }}" href="#">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
             @else
-                @if (Request::is("/"))
+                @if (!Request::is("login") && !Request::is("register"))
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link {{ Request::is("about-us")? "active" : "" }}" href="/about-us">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Buy</a>
+                        <a class="nav-link {{ Request::is("buy")? "active" : "" }}" href="/buy">Buy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Rent</a>
+                        <a class="nav-link {{ Request::is("rent")? "active" : "" }}" href="/rent">Rent</a>
                     </li>
                 @endif
                 <li class="nav-item">

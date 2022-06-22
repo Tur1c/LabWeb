@@ -38,7 +38,7 @@ class UserController extends Controller
         if(auth()->attempt($credentials)){
             return redirect()->route('home_page');
         } else {
-            return redirect()->back()->withErrors(['error' => 'Email or password is incorrect']);
+            return redirect()->back()->withInput()->withErrors(['error' => 'Email or password is incorrect']);
         }
     }
 

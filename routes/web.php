@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\AdminOfficeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +28,17 @@ Route::get("/register", [UserController::class, "index_register"])->name("regist
 Route::post("/register", [UserController::class, "register"])->name("register");
 
 Route::get('/logout', [UserController::class, "logout"])->name("logout");
+
+Route::get('/search', [PropertyController::class, "search"])->name("search");
+
+Route::get('/about-us', [OfficeController::class, "index"])->name("about_us");
+
+Route::get('/buy', [PropertyController::class, "buy"])->name("buy");
+
+Route::get('/rent', [PropertyController::class, "rent"])->name("rent");
+
+Route::resource('/company', AdminOfficeController::class)->middleware("admin");
+
+Route::resource('/real-estate', PropertyController::class)->middleware("admin");
+
+
