@@ -30,7 +30,7 @@
                     <a class="nav-link {{ Request::is("rent")? "active" : "" }}" href="/rent">Rent</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is("cart")? "active" : "" }}" href="#">Cart</a>
+                    <a class="nav-link {{ Request::is("cart")? "active" : "" }}" href="/cart">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>

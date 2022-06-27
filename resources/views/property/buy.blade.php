@@ -4,6 +4,11 @@
 
 @section('container')
     <div class="container-fluid col-10 justify-content-center mt-3">
+        @if (session()->has("error"))
+            <div class="alert alert-warning" role="alert">
+                {{ session("error") }}
+            </div>
+        @endif
         <h3>Showing Real Estates for Sale</h3>
         <div class="row mt-2 mb-4">
             @foreach ($properties as $property)
@@ -16,7 +21,15 @@
                             <a class="btn btn-info text-white">{{ $property->building->name }}</a>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="btn btn-primary text-center">Buy</a>
+                            @if (Auth::user())
+                                <form action="{{ route('cart_store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $property->id }}">
+                                    <button type="submit" class="btn btn-primary">{{ $property->category->name }}</button>
+                                </form>
+                            @else
+                                <button type="button" onclick="location.href='{{ route('login_page') }}'" class="btn btn-primary text-center">{{ $property->category->name }}</button>
+                            @endif
                         </div>
                     </div>
                 </div>

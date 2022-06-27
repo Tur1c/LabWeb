@@ -20,4 +20,9 @@ class Property extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
+    public function cart_detail()
+    {
+        return $this->hasOne(CartDetail::class);
+    }
 }

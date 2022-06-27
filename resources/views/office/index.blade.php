@@ -6,7 +6,10 @@
     <div class="card bg-dark text-white mb-5">
         <img class="card-img" style="background-image: url('/storage/about-us.jpg'); width: 100%; height:300px; background-repeat: none; background-position: center">
         <div class="card-img-overlay d-flex flex-column justify-content-center">
-            <h5 class="card-title text-center">About Us</h5>
+            <h2 class="card-title text-center">About Our Company</h2>
+            <div class="m-5 text-center">
+                <p>Our company was founded at 2008 by our founder Renanda. At that time, we started as law firm specializing in real estate and construction. In 2012, our company expanded our service of real estate lawyers. Today, our company have 5 offices throughout the states and is planning to build more.</p>
+            </div>
         </div>
     </div>
     <div class="container-fluid mb-4">

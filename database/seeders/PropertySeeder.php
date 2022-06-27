@@ -51,7 +51,7 @@ class PropertySeeder extends Seeder
             'price' => '1000000',
             'address' => '123 Main St',
             'category_id' => '2',
-            'building_id' => '2'
+            'building_id' => '1'
         ]);
 
         Property::create([
@@ -59,7 +59,7 @@ class PropertySeeder extends Seeder
             'price' => '1000000',
             'address' => '123 Main St',
             'category_id' => '2',
-            'building_id' => '2'
+            'building_id' => '1'
         ]);
 
         Property::create([
@@ -67,7 +67,7 @@ class PropertySeeder extends Seeder
             'price' => '1000000',
             'address' => '123 Main St',
             'category_id' => '2',
-            'building_id' => '2'
+            'building_id' => '1'
         ]);
 
         Property::create([

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PropertyController;
@@ -41,4 +42,11 @@ Route::resource('/company', AdminOfficeController::class)->middleware("admin");
 
 Route::resource('/real-estate', PropertyController::class)->middleware("admin");
 
+Route::post('/add-cart', [CartController::class, "add"])->name('cart_store');
+
+Route::resource('/cart', CartController::class);
+
+Route::get('/cart-finish/{id}', [CartController::class, "finish"])->name('finish', 'id');
+
+Route::get('/checkout', [CartController::class, "checkout"])->name('checkout');
 

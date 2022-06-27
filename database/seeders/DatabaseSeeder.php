@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PropertySeeder::class,
             OfficeSeeder::class,
+            CartSeeder::class,
         ]);
     }
 }

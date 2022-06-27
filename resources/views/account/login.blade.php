@@ -12,7 +12,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">Email address</label>
-                    <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Enter Your Email Address Here..." value="{{ old('email') }}">
+                    <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Enter Your Email Address Here..." value={{ \Illuminate\Support\Facades\Cookie::get("login_cookie") !== NULL ? \Illuminate\Support\Facades\Cookie::get("login_cookie") : old('email') }}>
                 </div>
 
                 <!-- Password input -->
@@ -26,7 +26,7 @@
                     <div class="col d-flex justify-content-center">
                         <!-- Checkbox -->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked>
+                            <input class="form-check-input" type="checkbox" value="" name="checkbox" id="form2Example31" checked={{ \Illuminate\Support\Facades\Cookie::get("login_cookie") !== NULL }}>
                             <label class="form-check-label" for="form2Example31"> Remember me </label>
                         </div>
                     </div>

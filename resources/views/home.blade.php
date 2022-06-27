@@ -4,6 +4,11 @@
 
 @section('container')
     <div class="container-fluid">
+        @if (session()->has("success"))
+            <div class="alert alert-success" role="alert">
+                {{ session("success") }}
+            </div>
+        @endif
         <div class="card bg-dark text-white m-3">
             <img class="card-img" style="background-image: url('/storage/home-image.jpg'); width: 100%; height:300px; background-repeat: none; background-position: center">
             <div class="card-img-overlay d-flex flex-column justify-content-center">

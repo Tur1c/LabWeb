@@ -20,6 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->string('address');
             $table->foreignId('category_id');
             $table->foreignId('building_id');
+            $table->string('status')->default('open');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');
