@@ -73,12 +73,6 @@ class UserApiController extends Controller
         // dd($user);
 
         $datas = CartDetail::where("cart_id", auth()->user()->cart->id)->get();
-        if(count($datas) == 0) {
-            return response()->json([
-                'data' => [],
-                'user_id' => new UserResource(auth()->user())
-            ]);
-        }
 
         return response()->json([
             'data' => CartResource::collection($datas),
