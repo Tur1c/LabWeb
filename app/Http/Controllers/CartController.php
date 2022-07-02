@@ -114,7 +114,7 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    public function finish($id) 
+    public function finish($id)
     {
         $property = Property::find($id);
         $cartdetail = $property->cart_detail;
