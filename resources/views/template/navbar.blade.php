@@ -14,10 +14,13 @@
                     <a class="nav-link {{ Request::is("company*")? "active" : "" }}" href="/company">Manage Company</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/real-estate">Manage Real Estates</a>
+                    <a class="nav-link {{ Request::is("real-estate*")? "active" : "" }}" href="/real-estate">Manage Real Estates</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="nav-link" style="background:none;border:none">Logout</button>
+                    </form>
                 </li>
             @elseif (Auth::check())
                 <li class="nav-item">
@@ -33,7 +36,10 @@
                     <a class="nav-link {{ Request::is("cart")? "active" : "" }}" href="/cart">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="nav-link" style="background:none;border:none">Logout</button>
+                    </form>
                 </li>
             @else
                 @if (!Request::is("login") && !Request::is("register"))

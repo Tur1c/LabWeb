@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Office;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class OfficeSeeder extends Seeder
@@ -15,6 +16,7 @@ class OfficeSeeder extends Seeder
     public function run()
     {
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-1.jpg',
             'office_name' => 'Office 1',
             'office_address' => '123 Main St',
@@ -23,6 +25,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-2.jpg',
             'office_name' => 'Office 2',
             'office_address' => '123 Main St',
@@ -31,6 +34,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-3.jpg',
             'office_name' => 'Office 3',
             'office_address' => '123 Main St',
@@ -39,6 +43,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-4.jpg',
             'office_name' => 'Office 4',
             'office_address' => '123 Main St',
@@ -47,6 +52,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-5.jpg',
             'office_name' => 'Office 5',
             'office_address' => '123 Main St',
@@ -55,6 +61,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-6.jpg',
             'office_name' => 'Office 6',
             'office_address' => '123 Main St',
@@ -63,6 +70,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-7.jpg',
             'office_name' => 'Office 7',
             'office_address' => '123 Main St',
@@ -71,6 +79,7 @@ class OfficeSeeder extends Seeder
         ]);
 
         Office::create([
+            'id' => Str::uuid(),
             'image' => 'office-images/office-8.jpg',
             'office_name' => 'Office 8',
             'office_address' => '123 Main St',

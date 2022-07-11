@@ -15,7 +15,7 @@ class AdminOfficeController extends Controller
      */
     public function index()
     {
-        $offices = Office::paginate(4);
+        $offices = Office::orderBy('office_name')->paginate(4);
         return view('admin.company', compact('offices'));
     }
 
@@ -42,7 +42,7 @@ class AdminOfficeController extends Controller
             'office_address' => 'required|max:255',
             'contact_name' => 'required|max:255',
             'contact_information' => 'required|max:255',
-            'image' => 'image|max:1024|mimes:jpeg,png,jpg',
+            'image' => 'image|max:10240|mimes:jpeg,png,jpg',
         ]);
 
         if($request->file("image")) {

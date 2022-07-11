@@ -18,7 +18,7 @@
                             <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top" alt="..." style="height: 125px">
                             <h5 class="card-title">${{ $property->price }} / month</h5>
                             <p class="card-text">{{ $property->address }}</p>
-                            <a class="btn btn-info text-white">{{ $property->building->name }}</a>
+                            <a class="p-2 bg-info text-white" style="text-decoration: none">{{ $property->building->name }}</a>
                         </div>
                         <div class="card-body text-center">
                             @if (Auth::user())

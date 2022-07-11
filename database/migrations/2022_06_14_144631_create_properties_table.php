@@ -14,12 +14,12 @@ class CreatePropertiesTable extends Migration
     public function up()
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('image');
             $table->integer('price');
             $table->string('address');
-            $table->foreignId('category_id');
-            $table->foreignId('building_id');
+            $table->foreignUuid('category_id');
+            $table->foreignUuid('building_id');
             $table->string('status')->default('open');
             $table->timestamps();
 

@@ -12,7 +12,7 @@
         <div class="card bg-dark text-white m-3">
             <img class="card-img" style="background-image: url('/storage/home-image.jpg'); width: 100%; height:300px; background-repeat: none; background-position: center">
             <div class="card-img-overlay d-flex flex-column justify-content-center">
-              <h5 class="card-title text-center">Find Your Future Home</h5>
+              <h5 class="card-title text-center mb-4">Find Your Future Home</h5>
               <form action="/search" class="d-flex" role="search" method="get">
                   <input class="form-control me-2" type="search" placeholder="Enter a City, Property Type, Buy or Rent.." aria-label="Search" name="search">
                   <button class="btn btn-outline-success btn-primary text-white" type="submit">Search</button>

@@ -5,19 +5,21 @@
 @section('container')
     <div class="container-fluid col-10 justify-content-center mt-3">
         <a class="btn btn-primary btn-lg" href="{{ url('/real-estate/create') }}">+ Add Real Estate</a>
-        <div class="row mt-5 mb-4">
+        <div class="row mt-4 mb-4">
             @foreach ($properties as $property)
-                <div class="col-3">
-                    <div class="card">
+                <div class="col-3 d-flex justify-content-between">
+                    <div class="card" style="width: 300px;">
                         <div class="card-body">
-                            <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('storage/' . $property->image) }}" class="card-img-top" alt="..." style="height: 125px">
                             <h5 class="card-title">{{ $property->price }} / month</h5>
                             <p class="card-text">{{ $property->address }}</p>
-                            <a href="#" class="btn btn-info">{{ $property->building->name }}</a>
-                            <a href="#" class="btn btn-primary">{{ $property->category->name }}</a>
-                            <a href="#" class="btn btn-success">{{ $property->status }}</a>
+                            <a class="p-1 bg-info text-white" style="text-decoration: none; font-size: 8pt">{{ $property->building->name }}</a>
+                            @if ($property->status !== "Transaction Complete" && $property->status !== "Added to cart")
+                                <a class="p-1 bg-primary text-white" style="text-decoration: none; font-size: 8pt">{{ $property->category->name }}</a>
+                            @endif
+                            <a class="p-1 bg-success text-white" style="text-decoration: none; font-size: 8pt">{{ $property->status }}</a>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-around">
                             <a href="/real-estate/{{ $property->id }}/edit" class="btn btn-primary">Edit</a>
                             <form action="/real-estate/{{ $property->id }}" method="post" class="d-inline">
                                 @csrf

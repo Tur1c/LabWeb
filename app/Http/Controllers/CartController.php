@@ -12,8 +12,10 @@ class CartController extends Controller
     public function add(Request $request)
     {
         $property = Property::find($request->id);
-        if($property->status == "Added to cart" || $property->status == "Transaction Complete") {
+        if($property->status == "Added to cart") {
             return back()->with("error", "Property already input");
+        } else if ($property->status == "Transaction Complete") {
+            return back()->with("error", "Property already been checkout");
         }
         $date = Carbon::now();
         CartDetail::create([

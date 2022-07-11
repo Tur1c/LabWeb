@@ -48,6 +48,7 @@ class UserApiController extends Controller
     public function logout(Request $request)
     {
         $token = $request->user()->token();
+        auth()->user()->AauthAcessToken()->delete();
         $token->revoke();
         auth()->guard('web')->logout();
     }

@@ -64,8 +64,11 @@
                     </div>
                 @endif
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary mb-4 btn-block">Update</button>
+                <!-- Button -->
+                <div class="d-flex justify-content-around">
+                    <button type="submit" class="btn btn-primary mb-4 btn-block">Update</button>
+                    <button class="btn btn-danger mb-4 btn-block" onclick="history.go(-1)">Back</button>
+                </div>
             </form>
         </div>
     </div>

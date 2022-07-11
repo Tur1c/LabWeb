@@ -27,16 +27,18 @@ class PropertyController extends Controller
         $search = ucfirst($title);
         $properties = Property::all();
         if($search == 'Buy') {
-            $properties = Property::where('category_id', 1)->paginate(4)->withQueryString();
+            $category = Category::where('name', 'Sale')->first();
+            $properties = Property::where('category_id', $category->id)->paginate(4)->withQueryString();
         } elseif($search == 'Rent') {
-            $properties = Property::where('category_id', 2)->paginate(4)->withQueryString();
+            $category = Category::where('name', 'Rent')->first();
+            $properties = Property::where('category_id', $category->id)->paginate(4)->withQueryString();
         } else {
             if($search == 'House') {
-                $search = 1;
-                $properties = Property::where('building_id', $search)->paginate(4)->withQueryString();
+                $building = Building::where('name', 'House')->first();
+                $properties = Property::where('building_id', $building->id)->paginate(4)->withQueryString();
             } else if($search == 'Apartment') {
-                $search = 2;
-                $properties = Property::where('building_id', $search)->paginate(4)->withQueryString();
+                $building = Building::where('name', 'Apartment')->first();
+                $properties = Property::where('building_id', $building->id)->paginate(4)->withQueryString();
             } else {
                 $properties = Property::where('address', 'like', '%' . $search . '%')->paginate(4)->withQueryString();
             }
@@ -48,13 +50,15 @@ class PropertyController extends Controller
 
     public function buy()
     {
-        $properties = Property::where('category_id', 1)->paginate(4)->withQueryString();
+        $category = Category::where('name', 'Sale')->first();
+        $properties = Property::where('category_id', $category->id)->paginate(4)->withQueryString();
         return view('property.buy', compact('properties'));
     }
 
     public function rent()
     {
-        $properties = Property::where('category_id', 2)->paginate(4)->withQueryString();
+        $category = Category::where('name', 'Rent')->first();
+        $properties = Property::where('category_id', $category->id)->paginate(4)->withQueryString();
         return view('property.rent', compact('properties'));
     }
 
@@ -80,11 +84,11 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'category_id' => 'required|in:1,2',
-            'building_id' => 'required|in:1,2',
+            'category_type' => 'required|in:Rent,Sale',
+            'building_type' => 'required|in:House,Apartment',
             'price' => 'required',
             'address' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg|max:1024',
+            'image' => 'image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
 
@@ -92,7 +96,18 @@ class PropertyController extends Controller
             $validatedData["image"] = $request->file("image")->store("real-estate-images");
         }
 
-        Property::create($validatedData);
+        $property = new Property();
+        $category = Category::where('name', $validatedData['category_type'])->first();
+        $building = Building::where('name', $validatedData['building_type'])->first();
+
+        $property->image = $validatedData["image"];
+        $property->price = $validatedData["price"];
+        $property->address = $validatedData["address"];
+        $property->category_id = $category->id;
+        $property->building_id = $building->id;
+        $property->save();
+
+        // Property::create($validatedData);
 
         return redirect('/real-estate')->with('success', 'Property created successfully');
     }

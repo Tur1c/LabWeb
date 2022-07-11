@@ -39,7 +39,7 @@
                 @endif
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary mb-4 btn-block w-100">Sign in</button>
+                <button type="submit" class="btn btn-primary mb-4 btn-block mx-auto d-block">Login</button>
 
                 <!-- Register buttons -->
                 <div class="text-center">

@@ -14,9 +14,9 @@ class CreateCartDetailsTable extends Migration
     public function up()
     {
         Schema::create('cart_details', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cart_id');
-            $table->foreignId('property_id');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('cart_id');
+            $table->foreignUuid('property_id');
             $table->date('date');
             $table->timestamps();
 
